@@ -18,3 +18,12 @@ $for(classoption)$
   $classoption$$sep$,
 $endfor$
 ]{$documentclass$}
+
+$if(classicthesis)$
+\PassOptionsToPackage[
+$for(classicthesisoption)$
+  $classicthesisoption$$sep$,
+$endfor$
+]{classicthesis}
+\usepackage{classicthesis}
+$endif$
