@@ -1,0 +1,9 @@
+
+$if(classicthesis)
+\PassOptionsToPackage[
+$for(classicthesisoptions)$
+  $classicthesisoption$$sep$,
+$endfor$
+]{classicthesis}
+\usepackage{classicthesis}
+$endif$
