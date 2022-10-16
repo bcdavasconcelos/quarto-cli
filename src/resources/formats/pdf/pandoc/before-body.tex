@@ -1,15 +1,80 @@
-$if(has-frontmatter)$
-\frontmatter
+\frenchspacing
+\raggedbottom
+\pagenumbering{roman}
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Frontmatter | Elementos pré-textuais
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Cover | Capa
+\begin{titlepage}
+
+\makeatletter \begin{center} \textsc{$university$}\\ \vspace*{2cm}
+\spacedlowsmallcaps{$author$} \\ \vspace*{2cm}
+\begin{Huge} \color{CTtitle}\spacedallcaps{$title$} \\  \end{Huge} \vspace*{1cm}
+\begin{Large} $subtitle$ \end{Large} \vfill
+$city$ \\ $date$  \end{center}
+
+% Inner-cover | Contracapa
+\newpage \thispagestyle{empty}  
+\begin{center} \spacedlowsmallcaps{$author$} \\ \vfill
+\begin{Huge} \color{CTtitle}\spacedallcaps{$title$} \end{Huge} \vspace*{1,5cm}
+\begin{quote} $description$ \end{quote}  \vspace*{2cm}
+\begin{flushright} $if(advisor)$$advisor$ \\$endif$$if(researcharea)$
+$researcharea$ \\ $endif$\end{flushright} \vfill 
+$city$ \\ $date$ \end{center}
+\makeatother \end{titlepage}
+
+% Dedication | Dedicatória
+$if(dedication)$
+\clearpage \thispagestyle{empty}  
+\mbox{} \vfill
+	\begin{flushright} \emph{$dedication$} \end{flushright}
+$endif$ $if(thanks)$
+%  Acknowledgement | Agradecimentos
+\clearpage \thispagestyle{empty}  
+\chapter*{Agradecimentos}
+	$thanks$
+{\vfil}{}{}{}
+$endif$ $if(epigraph)$
+% Epigraph | Epígrafe 
+\clearpage \thispagestyle{empty}  
+	\begin{quote}\begin{flushright}
+		$epigraph$
+	\end{flushright}\end{quote} 
+{\vfil}{}{}{}
+$endif$ $if(resumo)$
+% Abstract | Resumo
+\clearpage \thispagestyle{empty}  
+$else$ $if(abstract)$
+\clearpage \thispagestyle{empty}  
+$endif$ $endif$
+$if(resumo)$
+\section*{Resumo}
+$resumo$ \\ $endif$ $if(abstract)$
+\section*{Abstract}
+$abstract$ \\
+{\vfil}{}{}{}
+$endif$ $if(abbreviations)$
+% Abbreviations | Abreviações
+\clearpage \thispagestyle{empty}  
+\begin{center}\textsc{\textbf{Lista de Abreviações}}\end{center}
+\begin{multicols}{2}\begin{onehalfspace}\begin{flushleft}
+$abbreviations$ \end{flushleft}\end{onehalfspace}\end{multicols}
+$endif$ $if(printshorthands)$
+\clearpage \thispagestyle{empty}  
+\begin{onehalfspace} \printshorthands \end{onehalfspace}
 $endif$
-$if(title)$
-$if(beamer)$
-\frame{\titlepage}
-$else$
-\maketitle
-$endif$
-$if(abstract)$
-\begin{abstract}
-$abstract$
-\end{abstract}
-$endif$
-$endif$
+
+
+%********************************************************************
+% Mainmatter
+%*******************************************************
+\mainmatter
+\cleardoublepage
+\pagestyle{scrheadings}
+\pagenumbering{arabic}
+%\setcounter{page}{90}
+% use \cleardoublepage here to avoid problems with pdfbookmark
+\cleardoublepage
